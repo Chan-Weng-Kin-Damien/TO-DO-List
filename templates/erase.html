@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Erase
+{% endblock %}
+
+{% block main %}
+<h1 class="text-warning">ERASE</h1>
+<form action="/erase" method="post">
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="erase" name="erase" placeholder="Task" type="text">
+    </div>
+    <button class="btn btn-warning" type="Submit">Erase</button>
+</form>
+{% endblock %}

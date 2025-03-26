@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Tasks</th>
+                <th scope="col">Due to date</th>
+                <th scope="col">Remaining days</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in database %}
+                <tr>
+                    <td style="font-weight: bold">{{row["tasks"]}}</td>
+                    <td>{{ row["date"]}}</td>
+                        {% if row["remaining_days"] == 0: %}
+                        <td>Today</td>
+                        {% elif row["remaining_days"] == 1: %}
+                        <td>{{row["remaining_days"]}} day</td>
+                        {% else %}
+                    <td>{{ row["remaining_days"]}} days</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <th scope="1">Total: </th>
+                {% if len == 0: %}
+                <th>Congratulation! You have finished all tasks!</th>
+                {% elif len == 1: %}
+                <td>{{len}} task</td>
+                {% else %}
+            <td>{{ len }} tasks</td>
+            {% endif %}
+            </tr>
+        </tfoot>
+    </table>
+
+{% endblock %}
